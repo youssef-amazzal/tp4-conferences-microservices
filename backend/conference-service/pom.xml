@@ -77,7 +77,7 @@
 			<version>4.3.0</version>
 		</dependency>
 		<dependency>
-			<groupId>souhail.bektachi</groupId>
+			<groupId>edu.amazzal</groupId>
 			<artifactId>keynote-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>compile</scope>
