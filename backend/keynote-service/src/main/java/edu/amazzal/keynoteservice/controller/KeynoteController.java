@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/keynotes")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class KeynoteController {
 
     private final KeynoteService service;

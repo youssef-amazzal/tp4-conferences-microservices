@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/conferences")
+@CrossOrigin("*")
 public class ConferenceController {
     private final ConferenceServiceImpl conferenceService;
 
@@ -19,7 +20,7 @@ public class ConferenceController {
         this.conferenceService = conferenceService;
     }
 
-    //    Get a list of all conferences
+    // Get a list of all conferences
     @GetMapping("")
     public ResponseEntity<List<ConferenceDTO>> getConferences() {
         return ResponseEntity.ok(conferenceService.getConferences());
@@ -32,19 +33,21 @@ public class ConferenceController {
 
     }
 
-    // POST	/conferences	Create a new conference
+    // POST /conferences Create a new conference
     @PostMapping("")
     public ResponseEntity<ConferenceDTO> addConference(@RequestBody ConferenceDTO conference) {
         ConferenceDTO created = conferenceService.createConference(conference);
-        return new ResponseEntity<>(created, HttpStatus.CREATED);    }
+        return new ResponseEntity<>(created, HttpStatus.CREATED);
+    }
 
     // Update an existing conference
     @PutMapping("/{id}")
-    public ResponseEntity<ConferenceDTO> updateConference(@PathVariable Long id, @RequestBody ConferenceDTO conference) {
+    public ResponseEntity<ConferenceDTO> updateConference(@PathVariable Long id,
+            @RequestBody ConferenceDTO conference) {
         return ResponseEntity.ok(conferenceService.updateConference(id, conference));
     }
 
-    //  Delete a conference
+    // Delete a conference
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteConference(@PathVariable Long id) {
         conferenceService.deleteConference(id);
@@ -70,7 +73,7 @@ public class ConferenceController {
 
     @PutMapping("")
     public ResponseEntity<ConferenceDTO> assignKeynote(@PathVariable Long conferenceId,
-                                                       @PathVariable Long keynoteId){
-        return ResponseEntity.ok(conferenceService.assignKeynoteToConference(conferenceId,keynoteId));
+            @PathVariable Long keynoteId) {
+        return ResponseEntity.ok(conferenceService.assignKeynoteToConference(conferenceId, keynoteId));
     }
 }
